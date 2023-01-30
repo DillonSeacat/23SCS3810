@@ -90,13 +90,30 @@ class DB:
         """
         TODO #1: list all courses
         """
-        pass
+        courses = []
+        with open(os.path.join('db', 'courses.csv'), 'r') as file:
+            for line in file:
+                line = line.strip()
+                prefix, number, description = line.split(',')
+                course = Course(prefix, number, description)
+                courses.append(course)
+            return courses
+
+        
 
     def list_sections(course) -> list: 
         """
         TODO #2: list all sections of a course
         """
-        pass
+        sections = []
+        with open(os.path.join('db', course.prefix + str(course.code), 'sections.csv'), 'r') as file:
+            for line in file:
+                line = line.strip()
+                year, semester,  number, instructor = line.split(',')
+                year = int(year)
+                section = Section(course, year, semester, number, instructor)
+                sections.append(section)
+            return sections
 
     def list_students(section) -> list:
         """
