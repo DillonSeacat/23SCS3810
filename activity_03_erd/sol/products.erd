@@ -1,0 +1,34 @@
+erdiagram products
+notation=crowsfoot
+
+entity Products { 
+    number key 
+    description 
+    sell_price 
+}
+
+entity Customers { 
+
+}
+
+entity Orders { 
+    number key 
+    ship_address 
+}
+
+weak entity Items { 
+    seq partial-key
+    qtt
+}
+
+relationship places { 
+    Customers[1] -> Orders[0..N]
+}
+
+weak relationship associated_with {
+    Orders[1] -> Items[1..N]
+}
+
+weak relationship based_on { 
+    Items[1..N] -> Products[1]
+}

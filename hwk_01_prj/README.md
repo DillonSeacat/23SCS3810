@@ -10,11 +10,9 @@ The only file that you need to submit is **fms.py**. There is no need to submit 
 
 # Grading
 
-+1 TO-DO #1: implementation is able to create new projects in the **projects.csv** file
++3 TO-DO #1
 
-+2 TO-DO #1: implementation is (also) able to create new projects with employees
-
-+2 TO-DO #2: implementation is able to search for employees given their id  
++2 TO-DO #2
 
 -1 source file didn't identify the student's name in the comments section
 

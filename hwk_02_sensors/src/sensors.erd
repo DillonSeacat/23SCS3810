@@ -1,0 +1,15 @@
+// CS3810: Principles of Database Systems
+// Instructor: Thyago Mota
+// Student: 
+// Description: An ERD for Sensors
+
+erdiagram sensors
+notation=crowsfoot
+
+entity Sensors { }
+entity Types { }
+entity Manufacturers { }
+entity Measurements { }
+entity Readings { }
+
+

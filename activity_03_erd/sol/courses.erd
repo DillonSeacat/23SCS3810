@@ -1,0 +1,19 @@
+erdiagram courses
+notation=crowsfoot
+
+entity Courses { }
+entity Sections { }
+entity Students { }
+entity Instructors { } 
+
+relationship has {
+    Courses[1] -> Sections[1..N]
+}
+
+relationship is_enrolled_id {
+    Students[0..N] -> Sections[0..N]
+}
+
+relationship teaches {
+    Instructors[1] -> Sections[0..N]
+}
