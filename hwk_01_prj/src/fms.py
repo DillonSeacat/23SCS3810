@@ -1,11 +1,12 @@
 """
 CS3810: Principles of Database Systems
 Instructor: Thyago Mota
-Student: 
+Student: Dillon Seacat
 Description: A simple FMS for projects
 """
 
 import os
+import csv
 
 PRJ_FILE_NAME = "projects.csv"
 EMP_FILE_NAME = "employees.csv"
@@ -131,8 +132,37 @@ class ProjectCRUD(CRUD):
         * if the project is found, return it
         * else, return None
     """
+    
     def read(self, key) -> Project: 
-        return None
+        projs = None
+        try:
+            with open(os.path.join('db', 'projects.csv'), 'r') as file:
+                for line in file:
+                    line = line.strip()
+                    cols = line.split(",")
+                    title = (cols[0])
+                    if title == key:
+                        start = cols[1]
+                        end = cols[2]
+                        budget = cols[3]
+                        employees=([])
+                        with open(os.path.join('db',key, 'employees.csv'), 'r') as file:
+                            for line in file:
+                                line = line.strip()
+                                cols = line.split(",")
+                                id = str(cols[0])
+                                name = cols[1]
+                                department = cols[2]
+                                employee = Employee(id, name, department)
+                                employees.append(employee)
+                        projs = Project(title, start, end, budget, employees)
+        finally:
+            file.close()
+        return projs
+
+
+
+
 
     def delete(self, key) -> bool: 
         result = False
@@ -165,7 +195,24 @@ class DB:
         * if the employee is not found, return None
     """
     def find_employee(id):
-        return None
+        empList=[]
+        try:
+            with open(os.path.join('db',title, 'employees.csv'), 'r') as file:
+                for line in file:
+                    line = line.strip()
+                    cols = line.split(",")
+                    id = str(cols[0])
+                    name = cols[1]
+                    department = cols[2]
+                    empList = Employee(id, name, department)
+                    empList.append(employee)
+                    if id in empList:
+                       return empList
+        finally:
+            return None
+
+
+
        
 def menu(): 
     print("1. Create")
