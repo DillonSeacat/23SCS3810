@@ -1,0 +1,13 @@
+erdiagram Clinics
+notation=crowsfoot
+
+entity Clinics { 
+
+}
+entity Physicians { 
+    UPNI key 
+
+}
+entity Patients { }
+entity  { }
+entity Readings { }
