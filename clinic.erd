@@ -27,4 +27,5 @@ entity Patients {
  }
     
 relationship attends {Physicians[0..N] -> Patients[0..N]}
-relationship has { Patients[0..N] -> Insurances[0..1]}
+relationship has { Patients[0..N] -> Insurances[0..1]	Policy_number
+}
