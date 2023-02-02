@@ -1,0 +1,30 @@
+erdiagram Clinics
+notation=crowsfoot
+
+entity Insurances {
+    HPID key
+    name 
+    tool_free 
+
+}
+entity Physicians { 
+    UPNI key 
+    email 
+    first_name
+    last_name
+    address 
+    phone 
+    speciality 
+
+}
+entity Patients {
+    ID key
+    first_name
+    last_name
+    address
+    phone
+
+ }
+    
+relationship attends {Physicians[0..N] -> Patients[0..N]}
+relationship has { Patients[0..N] -> Insurances[0..1]}
