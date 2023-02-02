@@ -3,7 +3,10 @@
 Design an E/R Model based on the following data requirements: 
 
 * there are sensors of different types, depending on their application (consumer/home, smart infrastructure, security/surveillance, healthcare, environmental, etc.)
-* a sensor is built by a manufacturer and is capable of generating readings for at least one measurement
+* a sensor can only be of one type
+* a sensor is built by a manufacturer 
+* a sensor can have the ability to measure one or more things (eg, pressure, temperature, etc.)
+* for each thing measured by a sensor, there can be multiple readings
 
 Your E/R model should be able to represent the following entity sets: 
 
@@ -14,6 +17,13 @@ Your E/R model should be able to represent the following entity sets:
 * Readings
 
 There is no need to represent attributes in your entity sets. 
+
+Your solution should represent the following relationships: 
+
+* Sensors and Types
+* Sensors and Measurements
+* Sensors and Manufacturers
+* Measurementes and Readings
 
 # Submission
 
