@@ -2,15 +2,18 @@ erdiagram courses
 notation=crowsfoot
 
 entity Students {
-    id key
-    name 
+    id: int key
+    name: string
 }
 
 entity Courses { 
-    number key
-    title
+    number:int key
+    title:string 
 }
-
+entity enrolls_in{
+    studnt_id: int key
+    course_number: int key
+}
 relationship enrolls_in {
     Students[0..N] -> Courses[0..N]
 }

@@ -2,8 +2,8 @@ erdiagram buildings
 notation=crowsfoot
 
 entity Buildings {
-    name key
-    address
+    name:string key
+    address:string
 }
 
 weak entity Rooms { 
