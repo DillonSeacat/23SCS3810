@@ -1,19 +1,54 @@
 // CS3810: Principles of Database Systems
 // Instructor: Thyago Mota
-// Student: 
+// Student: Dillon Seacat
 // Description: An ERD for a Paper Reviewing System
 
 erdiagram reviews
 notation=crowsfoot
 
-entity Papers  { 
-    
+weak entity Papers  { 
+    id:int partial-key
+    title: string
+    abstract: string
+    file_name: string
 }
 
 entity Authors { 
-    
+    email: string key
+    first_name: string
+    last_name: string
 }
 
 entity Reviewers { 
-    
+    email: string key
+    first_name: string
+    last_name:string
+    phone_number: int
+    affiliation: string
+    interests: string
+}
+
+entity Reviews_papers {
+    paper_id:int key
+    reviewer_email:string key
+    overall_recommendation: string
+    technical_merit:int
+    readability: int
+    originaility:int
+    relevance:int
+    review_committee_feedback:string
+    authors_feedback:string 
+}
+entity Written_by {
+    paper_id:int key
+    contact_author: string key
+    author_email:string key
+
+}
+
+relationship reviews_papers {
+    Reviewers[0..N] -> Papers[0..N]
+}
+relationship written_by {
+    Papers[0..N] -> Authors[N]
 }
