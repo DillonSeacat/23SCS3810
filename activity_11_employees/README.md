@@ -12,4 +12,8 @@ Create the following tables, populating them with the exact given data.
 
 2. Attribute “deptCode” in Employees should be defined with the foreign key constraint. 
 
+3. You will first try ‘MK’ as in ‘Marketing’ but because of the referential integrity constraint you should get an error.  After “seeing and believing” replace ‘Mk’ with ‘SL’. 
+
+4. Use NULL so you can see that the referential integrity constraint will not check NULL values.  
+
 Finish the queries embedded as to-do's in the SQL script. 
