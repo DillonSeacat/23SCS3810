@@ -1,0 +1,4 @@
+CS3810: Principles of Database Systems
+Instructor: Thyago Mota
+Student: 
+Description: An Relational Schema for a Ticketing System

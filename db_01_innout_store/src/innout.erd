@@ -1,0 +1,8 @@
+// CS3810: Principles of Database Systems
+// Instructor: Thyago Mota
+// Student(s): 
+// Description: ERD for the In-N-Out Store
+
+erdiagram innout
+notation=crowsfoot
+

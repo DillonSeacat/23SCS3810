@@ -1,0 +1,30 @@
+CS3810: Principles of Database Systems
+Instructor: Thyago Mota
+Student: 
+Description: An Relational Schema for a Ticketing System
+
+Events(code*: string, title: string, season: string, year: int, venueId: int) 
+
+Venues(id*: int, name: string) 
+
+Sectors(venueId*: int, sector_number*: int, seats: int) 
+
+Seats(venueId*: int, sector_number*: int, seat_number: int, status: string) 
+
+EventDays(event_code*: string, date*: date, time*: time) 
+
+SectorPricing(event_code*: string, date*: date, time*: time, sector_number*: int, price: currency)  
+
+*** no need to add venueId because each event happens at one specific venue *** 
+
+Customers(email*: string, name: string, addr: string, phone: string, credit_card: string) 
+
+Purchases(event_code*: string, date*: date, time*: time, sector_number*: int,  seat_number*: int, customer_id*: int) 
+
+*** no need to add venueId because each event happens at one specific venue *** 
+
++1 explain how you would use relational algebra to create a relation with all the sector prices for "The Entity Sets Ballet" on 02/20/23 starting at 8pm. 
+
+equijoin between Events and EventDays using code = event_code and date = "02/20/23" and time = 8pm and title = "The Entity Sets Ballet" 
+
+natural join between the above relation and SectorPricing

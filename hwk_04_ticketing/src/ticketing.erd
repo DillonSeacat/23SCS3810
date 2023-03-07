@@ -1,0 +1,68 @@
+// CS3810: Principles of Database Systems
+// Instructor: Thyago Mota
+// Student: 
+// Description: An ERD for a Ticketing System
+
+erdiagram ticketing
+notation=crowsfoot
+
+entity Events {
+    code key 
+    title 
+    season 
+    year
+}
+
+entity Venues {
+    id key 
+    name
+}
+
+weak entity Sectors {
+    sector_number partial-key 
+    seats
+}
+
+weak entity Seats {
+    seat_number partial-key
+    status
+}
+
+weak entity EventDays { 
+    date partial-key 
+    time partial-key
+}
+
+entity Customers { 
+    email key 
+    name 
+    address
+    phone
+    credit_card
+}
+
+relationship happens_in { 
+    Events[0..N] -> Venues[1]
+}
+
+relationship organized_into { 
+    Venues[1] -> Sectors[1..N]
+}
+
+relationship has { 
+    Sectors[1] -> Seats[1..N]
+}
+
+relationship happens_on {
+    Events[1] -> EventDays[1..N]
+}
+
+relationship priced {
+    EventDays[1..N] -> Sectors[1..N]
+    price
+}
+
+relationship purchases {
+    Customers[1] -> Seats[1..N] -> EventDays[1..N]
+}
+
