@@ -90,6 +90,18 @@ f) a list of the category descriptions (labeled as category) that do not have an
 
 g) set a variable named "ID" and assign a valid customer id to it; then show the content of the variable using a select statement
 
+HINT: to set a variable in postgres use the following syntax. 
+
+```
+\set variable value
+```
+
+To use a variable in an SQL statement, just prefix its name with colon. 
+
+```
+SELECT :variable;
+```
+
 h) a list describing all items purchased by the customer identified by the variable "ID" (you must used the variable), showing, the date of the purchase (labeled as date), the time of the purchase (labeled as time and in hh:mm:ss format), the item's description (labeled as item), the quantity purchased (labeled as qtt), the item price (labeled as price), and the total amount paid (labeled as total_paid).
 
 i) the total amount of sales per day showing the date and the total amount paid in chronological order
