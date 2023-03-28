@@ -1,6 +1,6 @@
 -- CS3810: Principles of Database Systems
 -- Instructor: Thyago Mota
--- Student: 
+-- Student: Dillon Seacat
 -- Description: Star Wars Database (SQL Competition)
 
 CREATE DATABASE starwars;
@@ -156,15 +156,42 @@ INSERT INTO FilmRatings VALUES (6716,1,2), (6716,2,5), (29200,2,4), (29200,4,5),
 -- TODO: answer a minimum of 5 of the 7 questions below; you can get up to 7 points in this homework if you get ALL queries right
 
 -- h) the top rated star wars film by the fans 
+    SELECT f.title, AVG(r.rating) as average FROM Films f JOIN FilmRatings r ON f.id = r.film
+    WHERE f.title LIKE 'Star Wars%' GROUP BY f.id ORDER BY average DESC LIMIT 1;
 
 -- j) the top rated film by fans with income '$150,000+'
+    SELECT fi.title, AVG(r.rating) as average 
+    FROM Fans f 
+    JOIN FilmRatings r ON f.id = r.fan 
+    JOIN Films fi ON r.film = fi.id 
+    WHERE f.income = (SELECT seq FROM IncomeLevels WHERE description = '$150,000+') 
+    GROUP BY fi.id ORDER BY average DESC LIMIT 1;
 
 -- k) the number of ratings AND the average rating received by "Princess Leia", rounded to 2 decimals
+    SELECT COUNT(r.rating) as ratings, ROUND(AVG(r.rating), 2) as avgerage 
+    FROM Characters c 
+    JOIN CharacterRatings r ON c.id = r.character 
+    WHERE c.name = 'Princess Leia';
 
 -- l) the average rating of "Star Wars: Episode V The Empire Strikes Back", rounded to 2 decimals
+    SELECT ROUND(AVG(r.rating), 2) as rating FROM Films f 
+    JOIN FilmRatings r ON f.id = r.film 
+    WHERE f.title = 'Star Wars: Episode V The Empire Strikes Back';
 
 -- m) the name of the character that received the least number of ratings 
+    SELECT c.name FROM Characters c 
+    LEFT JOIN CharacterRatings r ON c.id = r.character 
+    GROUP BY c.id ORDER BY COUNT(r.rating) ASC LIMIT 1;
 
 -- n) the favorite character according the yongest fan audience
+    SELECT c.name, ROUND(AVG(r.rating), 2) as rating 
+    FROM Fans f JOIN CharacterRatings r ON f.id = r.fan 
+    JOIN Characters c ON r.character = c.id 
+    WHERE f.age = (SELECT seq FROM AgeGroups WHERE description = '18-29') 
+    GROUP BY c.id ORDER BY rating DESC LIMIT 1;
 
 -- o) the income levels (descriptions) that has at least 100 fans, ordered by income sequential number
+    SELECT i.seq, i.description FROM IncomeLevels i INNER JOIN
+    (SELECT f.income AS income_level, COUNT(f.id) AS income_count FROM Fans f GROUP BY
+    f.income ORDER BY COUNT(f.id))income_level ON i.seq = income_level.income_level
+    WHERE income_level.income_count >=100 ORDER BY i.seq; 

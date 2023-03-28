@@ -1,8 +1,41 @@
 // CS3810: Principles of Database Systems
 // Instructor: Thyago Mota
-// Student(s): 
+// Student(s): Dillon Seacat
 // Description: ERD for the In-N-Out Store
 
 erdiagram innout
 notation=crowsfoot
 
+
+entity Customers {
+    id key
+    name
+    gender
+}
+
+entity Items {
+    code key
+    description
+    price
+    category_code
+}
+
+entity Categories {
+    code key
+    description
+}
+
+entity Sales {
+    id key
+    price
+    quantity
+    date
+    time
+}
+
+
+relationship has {Customers[1]-> Sales[0..N]->Items[1..N]
+    quantity
+    item_Price
+}
+relationship have {Items[N]-> Categories[0..1]}
