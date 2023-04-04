@@ -14,6 +14,18 @@ cd build
 source bin/activate
 ```
 
+Note: depending on your version of Windows you may need to activate your virtualenv using: 
+
+```
+bin\activate.bat
+```
+
+OR 
+
+```
+Scripts\activate.bat
+```
+
 Once "in" the virtual environment, you can install all of the packages required for your project (without the risk of conflicts with other projects). 
 
 To leave the virtual environment just run "deactivate". 
@@ -22,6 +34,12 @@ To leave the virtual environment just run "deactivate".
 
 ```
 pip3 install psycopg2
+```
+
+Note: if the command above doesn't work, try installing the binary version of the module: 
+
+```
+pip3 install psycopg2-binary
 ```
 
 # Restart Postgress
@@ -78,3 +96,7 @@ Run your code again. You should be able to see the rows from table **Employees**
 # Final Note
 
 The example here exposes the database password in the code which is bad practice that you should avoid. On the next activity we will discuss alternatives to properly secure your password in a program that access a database. 
+
+# Further Practice
+
+Remember the **hotels** database? Do you think you can write a Python script to connect to the **hotels** database?

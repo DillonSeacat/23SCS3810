@@ -3,11 +3,12 @@
 To properly secure your database connection parameters, create a **ConfigFile.properties** file (a text file) with the following values: 
 
 ```
-host: localhost 
-port: 5432
-dbname: hr
-user: hr_admin
-password: 135791
+[db]
+host=localhost 
+port=5432
+dbname=hr
+user=hr_admin
+password=135791
 ```
 
 Then install the **configparser** module using: 
