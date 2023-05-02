@@ -44,7 +44,7 @@ When making a new reservation it is necessary to define a transaction because mo
 Record that the default isolation level for transactions in postgres is **read committed**. Unfortunately, this isolation level does not give an implicit exclusive lock (needed when securing the booking). Therefore, there is a potential risk of more than one user booking the same room on the same day and time. To avoid this problem, your reservation procedure must define the transaction isolation level as **serializable**. In psycopg this is done issuing on the connection object **conn**: 
 
 ```
-conn.isolation_level = extensions.ISOLATION_LEVEL_SERIALIZABLE
+conn.set_isolation_level(extensions.ISOLATION_LEVEL_SERIALIZABLE)
 ```
 
 The flowchart below explains in detail how you should implement make new reservation. 
@@ -73,7 +73,7 @@ To speed-up coding for this assignment, the following prepared statements were s
 
 # Submission 
 
-**PLEASE, if working with a partner, ONLY ONE OF YOU NEEDS TO SUBMIT ON CANVAS**. Also, make sure both names are added in the comment section of SQL and s Python files. 
+**PLEASE, if working with a partner, ONLY ONE OF YOU NEEDS TO SUBMIT ON CANVAS**. Also, make sure both names are added in the comment section of SQL and Python files. 
 
 Submit a zip file names **booking.zip** with the following structure: 
 
