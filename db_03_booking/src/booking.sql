@@ -1,6 +1,6 @@
 -- CS3810: Principles of Database Systems
 -- Instructor: Thyago Mota
--- Student(s): 
+-- Student(s): Dillon Seacat
 -- Description: booking database
 
 DROP DATABASE booking;
@@ -88,4 +88,15 @@ GRANT ALL ON SEQUENCE users_user_seq TO booking;
 --     1 | 2023-05-15 | C      | 10:00:00 | 12:00:00 | AES-210 | Sam Mai Tai
 
 -- once your view is created and working, run the following line
+
+CREATE VIEW ReservationsView AS
+SELECT 
+    r.code, r.date, r.period, p.start, p.end, 
+    CONCAT(r.abbr, '-', r.room) AS room, u.name 
+FROM 
+    Reservations r JOIN Periods p ON r.period = p.period JOIN Users u ON r.user = u.user 
+ORDER BY r.date DESC, p.start DESC;
+
 GRANT ALL ON TABLE ReservationsView TO booking;
+
+SELECT * FROM ReservationsView;
